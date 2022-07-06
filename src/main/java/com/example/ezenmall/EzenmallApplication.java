@@ -10,7 +10,4 @@ public class EzenmallApplication {
 		System.out.println("Hello World");
 		SpringApplication.run(EzenmallApplication.class, args);
 	}
-
-
-
 }
