@@ -4,22 +4,20 @@ import com.example.ezenmall.product.model.dto.ProductInsertRequest;
 import com.example.ezenmall.product.model.dto.ProductUpdateRequest;
 import com.example.ezenmall.product.service.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RequestMapping(value = "/api/products")
+@RestController
 public class ProductController {
     private ProductService service;
 
     public ProductController(ProductService service) {this.service = service;}
-    @PostMapping
+    @PostMapping(value = "")
     public void insert(ProductInsertRequest request) { boolean result = service.insert(request);}
 
-    @PatchMapping
+    @PatchMapping(value = "")
     public void update(ProductUpdateRequest productUpdateRequest) { boolean result = service.update(productUpdateRequest);}
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id) { boolean result = service.delete(id);}
 }
