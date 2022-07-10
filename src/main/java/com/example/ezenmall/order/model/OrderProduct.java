@@ -1,4 +1,4 @@
-package com.example.ezenmall.order.domain;
+package com.example.ezenmall.order.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

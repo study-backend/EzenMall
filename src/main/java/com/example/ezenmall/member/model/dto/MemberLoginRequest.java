@@ -1,6 +1,6 @@
 package com.example.ezenmall.member.model.dto;
 
-public class LoginRequest {
+public class MemberLoginRequest {
 
     private String loginId;
     private String password;

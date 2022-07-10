@@ -1,28 +1,26 @@
-package com.example.ezenmall.product.domain;
+package com.example.ezenmall.product.model.dto;
 
 import java.time.LocalDateTime;
 
-public class Product {
-
-    private Long id;
+public class ProductInsertRequest {
+    private  String name;
     private String kind;
     private int price;
     private String author;
     private String publisher;
     private String publishingDate;
     private String image;
-    private int discription;
+    private int description;
     private double discountRate;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
-    public Long getId() {
-        return id;
-    }
+
 
     public String getKind() {
         return kind;
     }
+    public String getName() { return name;}
 
     public int getPrice() {
         return price;
@@ -44,8 +42,8 @@ public class Product {
         return image;
     }
 
-    public int getDiscription() {
-        return discription;
+    public int getDescription() {
+        return description;
     }
 
     public double getDiscountRate() {

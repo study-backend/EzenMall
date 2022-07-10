@@ -28,6 +28,10 @@ public class Member {
     @Column
     private LocalDateTime updateDate;
 
+    public Member() {
+
+    }
+
 
     public Long getId() {
         return id;
