@@ -6,18 +6,18 @@ import com.example.ezenmall.product.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/products")
-@Controller
+@RequestMapping(value = "/api/products")
+@RestController
 public class ProductController {
     private ProductService service;
 
     public ProductController(ProductService service) {this.service = service;}
-    @PostMapping(name = "")
+    @PostMapping(value = "")
     public void insert(ProductInsertRequest request) { boolean result = service.insert(request);}
 
-    @PatchMapping(name = "")
+    @PatchMapping(value = "")
     public void update(ProductUpdateRequest productUpdateRequest) { boolean result = service.update(productUpdateRequest);}
 
-    @DeleteMapping(name = "/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id) { boolean result = service.delete(id);}
 }

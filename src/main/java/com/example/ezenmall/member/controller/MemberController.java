@@ -6,26 +6,26 @@ import com.example.ezenmall.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/members")
-@RestController
+@RequestMapping(value = "/api/members")
+@Controller
 public class MemberController {
     private final MemberService service;
     public MemberController(MemberService service) {
         this.service = service;
     }
-//    @PostMapping(name = "/login")
-//    public void login(MemberLoginRequest request) {
-//        boolean result = service.login(request);
-//    }
-//    @PostMapping(name = "/join")
-//    public void join(MemberJoinRequest memberJoinRequest) {
-//        boolean result = service.join(memberJoinRequest);
-//    }
-    @PatchMapping(name = "")
+    @PostMapping(value = "/login")
+    public void login(MemberLoginRequest request) {
+        boolean result = service.login(request);
+    }
+    @PostMapping(value = "/join")
+    public void join(MemberJoinRequest memberJoinRequest) {
+        boolean result = service.join(memberJoinRequest);
+    }
+    @PatchMapping(value = "")
     public void update(MemberUpdateRequest memberUpdateRequest) {
         boolean result = service.update(memberUpdateRequest);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id) {
         boolean result = service.delete(id);
     }

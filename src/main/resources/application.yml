@@ -21,3 +21,7 @@ logging:
     org:
       hibernate: INFO
 
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp

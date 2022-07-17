@@ -6,18 +6,18 @@ import com.example.ezenmall.order.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/orders")
-@Controller
+@RequestMapping(value = "/api/orders")
+@RestController
 public class OrderController {
 
     private OrderService service;
 
     public OrderController(OrderService service) { this.service = service;}
 
-    @PostMapping(name = "")
+    @PostMapping(value = "")
     public void insert(OrderInsertRequest orderInsertRequest) {boolean result = service.insert(orderInsertRequest);}
 
-    @PatchMapping(name = "")
+    @PatchMapping(value = "")
     public void update(OrderUpdateRequest orderUpdateRequest) {
         boolean result = service.update(orderUpdateRequest);}
 
