@@ -1,14 +1,16 @@
 package com.example.ezenmall.order.model;
 
+import com.example.ezenmall.BaseTimeEntity;
+import com.example.ezenmall.member.model.Member;
+
 import javax.persistence.*;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table
+@Table(name =" Orders")
 @Entity
-public class Orders {
+public class Orders extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,14 +18,13 @@ public class Orders {
     private DecimalFormat totalPrice;
     @Column(name = "buyCount")
     private int buyCount;
-    @Column(name = "createDate")
-    private LocalDateTime createDate;
-    @Column(name = "updateTime")
-    private LocalDateTime updateTime;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderProduct> products = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn (name= "memberId")
+    private Member member;
 
     public Orders(Long id, int buyCount, DecimalFormat totalPrice) {
     }
@@ -44,13 +45,6 @@ public class Orders {
         return buyCount;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
 
     public void updateOrders(Long id, int buyCount, DecimalFormat totalPrice) {
     }

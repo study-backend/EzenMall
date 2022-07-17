@@ -1,11 +1,18 @@
 package com.example.ezenmall.product.model;
 
+import com.example.ezenmall.BaseTimeEntity;
+import com.example.ezenmall.order.model.OrderProduct;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Products")
-public class Product {
+public class Product extends BaseTimeEntity {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,10 +34,9 @@ public class Product {
     private int description;
     @Column(name = "discountRate")
     private double discountRate;
-    @Column(name = "createDate")
-    private LocalDateTime createDate;
-    @Column(name = "updateDate")
-    private LocalDateTime updateDate;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderProduct> orderProducts;
 
     public Product() {
 
@@ -74,13 +80,7 @@ public class Product {
         return discountRate;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
 
 
     public Product(String name, String kind, int price, String author, String publisher, String publishingDate, String image, int description, double discountRate) {

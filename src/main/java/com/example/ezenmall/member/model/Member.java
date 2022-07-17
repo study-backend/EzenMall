@@ -1,10 +1,15 @@
 package com.example.ezenmall.member.model;
 
+import com.example.ezenmall.BaseTimeEntity;
+import com.example.ezenmall.order.model.Orders;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
-@Table
-public class Member {
+@Table(name = "Members")
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,12 +25,11 @@ public class Member {
     private String phone;
     @Column(name = "address")
     private String address;
-    @Column(name = "createDate")
-    private LocalDateTime createDate;
-    @Column(name = "updateDate")
-    private LocalDateTime updateDate;
 
-    public Member() {
+    @OneToMany(mappedBy = "member") // 상대편에서 사용되는 본인의 이름하고 맵핑하는 것
+    private List<Orders> orders;
+
+     public Member() {
 
     }
 
@@ -58,13 +62,6 @@ public class Member {
         return address;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
 
     public Member(String loginId, String password, String name, String email, String phone, String address) {
         this.loginId = loginId;
