@@ -4,30 +4,28 @@ import com.example.ezenmall.member.model.dto.MemberLoginRequest;
 import com.example.ezenmall.member.model.dto.MemberUpdateRequest;
 import com.example.ezenmall.member.service.MemberService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+@RequestMapping(value = "/api/members")
 @Controller
 public class MemberController {
     private MemberService service;
     public MemberController(MemberService service) {
         this.service = service;
     }
-    @PostMapping
+    @PostMapping(value = "/login")
     public void login(MemberLoginRequest request) {
         boolean result = service.login(request);
     }
-    @PostMapping
+    @PostMapping(value = "/join")
     public void join(MemberJoinRequest memberJoinRequest) {
         boolean result = service.join(memberJoinRequest);
     }
-    @PatchMapping
+    @PatchMapping(value = "")
     public void update(MemberUpdateRequest memberUpdateRequest) {
         boolean result = service.update(memberUpdateRequest);
     }
-    @DeleteMapping("/api/members/{id}")
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id) {
         boolean result = service.delete(id);
     }
