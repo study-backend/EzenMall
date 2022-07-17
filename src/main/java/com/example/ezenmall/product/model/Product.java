@@ -1,29 +1,35 @@
 package com.example.ezenmall.product.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "Products")
 public class Product {
     @Id
-    @Column()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column()
+    @Column(name = "kind")
     private String kind;
-    @Column() private int price;
-    @Column() private String author;
-    @Column() private String publisher;
-    @Column() private String publishingDate;
-    @Column() private String image;
-    @Column() private int description;
-    @Column() private double discountRate;
-    @Column(name = "createDate") private LocalDateTime createDate;
+    @Column(name = "price")
+    private int price;
+    @Column(name = " author")
+    private String author;
+    @Column(name = "publisher")
+    private String publisher;
+    @Column(name = "publishingDate")
+    private String publishingDate;
+    @Column(name = "image")
+    private String image;
+    @Column(name = "description")
+    private int description;
+    @Column(name = "discountRate")
+    private double discountRate;
+    @Column(name = "createDate")
+    private LocalDateTime createDate;
+    @Column(name = "updateDate")
     private LocalDateTime updateDate;
 
     public Product() {

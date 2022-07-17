@@ -1,28 +1,28 @@
 package com.example.ezenmall.order.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 @Table
 @Entity
 public class OrderProduct {
-    @Column
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "orderId")
     private Long orderId;
-    @Column
+    @Column(name = "productId")
     private Long productId;
-    @Column
+    @Column(name = "discountRate")
     private DecimalFormat discountPrice;
-    @Column
+    @Column(name = " createDate")
     private LocalDateTime createDate;
-    @Column
+    @Column(name = "updateDate")
     private LocalDateTime updateDate;
+
+    @ManyToOne
+    private Orders orders;
 
     public Long getId() {
         return id;

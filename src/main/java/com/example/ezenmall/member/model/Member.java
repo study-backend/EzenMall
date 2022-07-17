@@ -1,31 +1,28 @@
 package com.example.ezenmall.member.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 @Table
 public class Member {
-    @Column
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "loginId")
     private String loginId;
-    @Column
+    @Column(name = "password")
     private String password;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "email")
     private String email;
-    @Column
+    @Column(name = "phone")
     private String phone;
-    @Column
+    @Column(name = "address")
     private String address;
-    @Column
+    @Column(name = "createDate")
     private LocalDateTime createDate;
-    @Column
+    @Column(name = "updateDate")
     private LocalDateTime updateDate;
 
     public Member() {

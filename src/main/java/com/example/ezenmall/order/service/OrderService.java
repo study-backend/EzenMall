@@ -3,10 +3,11 @@ import com.example.ezenmall.order.model.Orders;
 import com.example.ezenmall.order.model.dto.OrderInsertRequest;
 import com.example.ezenmall.order.model.dto.OrderUpdateRequest;
 import com.example.ezenmall.order.repository.OrderRepository;
+import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
-
+@Service
 public class OrderService {
 
     private OrderRepository repository;
